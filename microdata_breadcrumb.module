@@ -1,0 +1,17 @@
+<?php
+
+function microdata_breadcrumb_preprocess_breadcrumb(&$variables){
+	if (strpos($_GET['q'], 'admin/') === FALSE) {
+	  foreach($variables['breadcrumb'] as $key=>$value){
+	    if (strpos('<a', $value) !== FALSE) {
+	      $value = preg_replace('/^(.*<a[^>]+)>(.+)(<\/a>.*)$/', '$1 itemprop="url"><span itemprop="title">$2</span>$3', $value);
+	    }
+	    else {
+	      $value = '<span itemprop="title">' . $value . '</span>';
+	    }
+	    $value = '<div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">' . $value . '</div>';
+	    $variables['breadcrumb'][$key] = $value;
+	  }
+	}
+}
+
