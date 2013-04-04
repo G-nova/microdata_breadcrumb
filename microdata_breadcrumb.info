@@ -3,5 +3,3 @@ description = Add microdatas on breadcrumb
 core = 7.x
 php = 5
 package = 'Others'
-
-files[] = microdata_breadcrumb.module
