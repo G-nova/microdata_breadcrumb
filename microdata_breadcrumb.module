@@ -1,17 +1,17 @@
 <?php
 
 function microdata_breadcrumb_preprocess_breadcrumb(&$variables){
-	if (path_is_admin(current_path()) === FALSE) {
-	  foreach($variables['breadcrumb'] as $key=>$value){
-	    if (strpos('<a', $value) !== FALSE) {
-	      $value = preg_replace('/^(.*<a[^>]+)>(.+)(<\/a>.*)$/', '$1 itemprop="url"><span itemprop="title">$2</span>$3', $value);
-	    }
-	    else {
-	      $value = '<span itemprop="title">' . $value . '</span>';
-	    }
-	    $value = '<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb_item">' . $value . '</span>';
-	    $variables['breadcrumb'][$key] = $value;
-	  }
-	}
+  if (path_is_admin(current_path()) === FALSE) {
+    foreach($variables['breadcrumb'] as $key=>$value){
+      if (strpos('<a', $value) !== FALSE) {
+        $value = preg_replace('/^(.*<a[^>]+)>(.+)(<\/a>.*)$/', '$1 itemprop="url"><span itemprop="title">$2</span>$3', $value);
+      }
+      else {
+        $value = '<span itemprop="title">' . $value . '</span>';
+      }
+      $value = '<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb_item">' . $value . '</span>';
+      $variables['breadcrumb'][$key] = $value;
+    }
+  }
 }
 
