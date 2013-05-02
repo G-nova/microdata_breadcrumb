@@ -9,7 +9,7 @@ function microdata_breadcrumb_preprocess_breadcrumb(&$variables){
 	    else {
 	      $value = '<span itemprop="title">' . $value . '</span>';
 	    }
-	    $value = '<div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">' . $value . '</div>';
+	    $value = '<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb_item">' . $value . '</span>';
 	    $variables['breadcrumb'][$key] = $value;
 	  }
 	}
